@@ -32,6 +32,7 @@ NVCCFLAGS=-O3 -use_fast_math -std=c++11 \
 	-gencode arch=compute_70,code=sm_70 \
 	-gencode arch=compute_60,code=sm_60 \
 	-gencode arch=compute_52,code=sm_52 \
+	-gencode=arch=compute_37,code=sm_37 \
 	-I $(TF_INC) -I $(CUDA_INC) -I $(LOCAL_INC) -D GOOGLE_CUDA=1 -x cu -w -Xcompiler -fPIC --expt-relaxed-constexpr -DNDEBUG \
 	$(ABI) # -lineinfo
 
