@@ -25,7 +25,7 @@
 #include "reduce_mask.h"
 #include "zero_block_counters.cu.h"
 #include "reduce_mask.cu.h"
-#include "tensorflow/core/util/cuda_kernel_helper.h"
+//#include "tensorflow/core/util/cuda_kernel_helper.h"
 #include "cuda_helpers.h"
 #include "op_utils.h"
 

@@ -24,7 +24,7 @@
 
 #include "sparse_gather.h"
 #include "sparse_blocks.cu.h"
-#include "tensorflow/core/util/cuda_kernel_helper.h"
+// #include "tensorflow/core/util/cuda_kernel_helper.h"
 #include "cuda_helpers.h"
 #include "cuda_runtime.h"
 #include "op_utils.h"

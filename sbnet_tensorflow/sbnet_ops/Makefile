@@ -32,7 +32,7 @@ NVCCFLAGS=-O3 -use_fast_math -std=c++11 \
 	-gencode arch=compute_70,code=sm_70 \
 	-gencode arch=compute_60,code=sm_60 \
 	-gencode arch=compute_52,code=sm_52 \
-	-I $(TF_INC) -I $(CUDA_INC) -I $(LOCAL_INC) -D GOOGLE_CUDA=1 -x cu -w -Xcompiler -fPIC --expt-relaxed-constexpr \
+	-I $(TF_INC) -I $(CUDA_INC) -I $(LOCAL_INC) -D GOOGLE_CUDA=1 -x cu -w -Xcompiler -fPIC --expt-relaxed-constexpr -DNDEBUG \
 	$(ABI) # -lineinfo
 
 CUOBJS=\
@@ -56,5 +56,6 @@ build/libsbnet.so: $(CUOBJS) sparse_gather.cc reduce_mask.cc
 		build/sparse_gather.cu.o build/reduce_mask.cu.o \
 		-I $(TF_INC) \
 		-I $(CUDA_INC) \
+		-D_GLIBCXX_USE_CXX11_ABI=0 \
 		-D GOOGLE_CUDA=1 -fPIC -lcudart -L$(CUDA_LIB) -L$(TF_LIB) -ltensorflow_framework -lgomp $(ABI)
 
