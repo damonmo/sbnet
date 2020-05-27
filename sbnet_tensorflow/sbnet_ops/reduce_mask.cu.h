@@ -102,7 +102,7 @@ __device__ void reduceMask_t(
         mx = avgPooling ? (mx + readVal) : max(mx, readVal);
         #pragma unroll
         for (int offset = warpLanes/2; offset > 0; offset /= 2) {
-            float warped = __shfl_down_sync(mx, offset);
+            float warped = __shfl_down_sync(0xFFFFFFFF, mx, offset);
             mx = avgPooling ? (mx + warped) : max(mx, warped);
         }
 
